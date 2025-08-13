@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSN_cart</title>
+    
+    <style>
+        body {
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+.hero {
+    position: left;
+    width: 100%;
+    height: 10vh;
+    background-color: black;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    margin: 0%;
+    padding: 0px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav img{
+    width: 80px;
+    border-radius: 50%;
+}
+
+nav h1 i {
+    color: rgb(243, 239, 239);
+    font-style: oblique;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+    font-size: 200%;
+    margin-right:1050px;
+}
+
+nav ul li {
+    display: -webkit-inline-flex;
+    list-style-type: armenian;
+    margin: 10px 20px;
+    
+}
+
+nav ul li a {
+    
+    text-decoration: none;
+    color: rgb(239, 233, 233);
+    font-size: 20px;
+    font-weight: bold;
+}
+table {
+    border-collapse: collapse;
+    
+    margin: 2%;
+}
+table th {
+    border-color: rgb(220, 212, 203);
+    padding-inline: 200px;
+    font-size: 30px;
+    color: rgb(109, 104, 104);
+
+}
+button{
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: green;
+    color: antiquewhite;
+
+}
+button {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+    
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.background-slideshow {
+    position: absolute;
+    top: 200px;
+    left: 0px;
+    bottom:0px;
+    width: 100%;
+    height: 80%;
+    background-size: cover;
+    background-position: center;
+    animation: changeBackground 15s infinite;
+}
+
+/* Define the keyframes for background change */
+@keyframes changeBackground {
+    0% {
+        background-image: url("../images/frutie2.jpg");
+    }
+    33% {
+        background-image: url('../images/frutie3.jpg');
+    }
+    66% {
+        background-image: url('../images/frutie4.jpg');
+        ;
+    }
+    100% {
+        background-image: url('../images/watermelon.jpg');
+    }
+}
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="background-slideshow"></div>
+    <div class="hero">
+        <nav>
+            <img src="../images/trolley.png" alt="" class="logo">
+
+            <h1><i>NSN_fruits_cart</i></h1>
+            <ul>
+                <li><a href="../Cart/cart.html">Home</a></li>
+                <li><a href="../Cart/shop.html">Shop</a></li>
+                <li><a href="../Cart/cart_table.html">Cart</a></li>
+                <li><a href="../Cart/f_cart-login.html">Logout</a></li>
+                <li><a href="../Cart/order.html">Order</a></li>
+            </ul>
+        </nav>
+        <table id="fruit_cart-table" border="1" >
+        
+            <th>S.no</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            
+            <tbody id="table-body">
+                
+            </tbody>
+           
+            
+        </table>
+        <button id="done" onclick="donebtn()" >Done</button>
+        
+        <script>
+let cart = JSON.parse(localStorage.getItem('cart'));
+            let order = [];
+
+            if (cart) {
+                for (let i = 0; i < cart.length; i++) {
+                    const item = cart[i];
+                    const row = document.createElement('tr');
+                    row.innerHTML =
+                        `   <td>${i + 1}</td>
+                            <td>${item.name}</td>
+                            <td>${item.details.substring(0, 3)}</td>
+                            <td>${item.details.substring(4, 8)}</td>
+                        `;
+                    document.getElementById('table-body').appendChild(row);
+                }
+            }
+            function donebtn() {
+                // Store the current cart items as an order
+                
+                
+                
+                // Optionally, provide feedback to the user
+                window.alert('your order is received....The product will be coming soon....!');
+                
+                
+            }
+        
+        </script>
+    </div>
+    
+</body>
+
+</html>
